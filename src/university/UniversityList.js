@@ -49,17 +49,21 @@ function UniversityList() {
         <button type="submit" className="btn btn-primary">Search</button>
       </form>
       
-      <ul className="list-group">
-        {universities.map((university, index) => (
-          <UniversityItem
-            key={index}
-            university={university}
-            index={index}
-            toggleDetails={toggleDetails}
-            handleUniversityClick={handleUniversityClick}
-          />
-        ))}
-      </ul>
+      {universities.length === 0 ? (
+        <p>No university found</p>
+      ) : (
+        <ul className="list-group">
+          {universities.map((university, index) => (
+            <UniversityItem
+              key={index}
+              university={university}
+              index={index}
+              toggleDetails={toggleDetails}
+              handleUniversityClick={handleUniversityClick}
+            />
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
