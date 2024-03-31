@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import BASE_URL from '../config/ApiConfig';
 
 function UniversityDetails() {
   const { name } = useParams();
@@ -11,7 +12,7 @@ function UniversityDetails() {
     const fetchUniversityDetails = async () => {
       try {
 
-        const response = await axios.get(`http://localhost:8085/api/v1/university/details?name=${encodeURIComponent(name)}`);
+        const response = await axios.get(`${BASE_URL}/university/details?name=${encodeURIComponent(name)}`);
         setUniversityDetails(response.data);
       } catch (error) {
         console.error('Error fetching university details:', error);

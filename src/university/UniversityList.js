@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import UniversityItem from './UniversityItem';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import BASE_URL from '../config/ApiConfig';
 
 function UniversityList() {
   const [country, setCountry] = useState('');
@@ -9,7 +10,7 @@ function UniversityList() {
 
   const fetchUniversities = async () => {
     try {
-      const response = await axios.get(`http://localhost:8085/api/v1/university/getByCountry?country=${country}`);
+      const response = await axios.get(`${BASE_URL}/university/getByCountry?country=${country}`);
       console.info('Data: ', response.data);
       setUniversities(response.data.map(university => ({ ...university, expanded: false })));
     } catch (error) {
